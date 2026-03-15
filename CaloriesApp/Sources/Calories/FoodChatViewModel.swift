@@ -307,16 +307,18 @@ final class FoodChatViewModel: ObservableObject {
         let targetF = Int(targetFat.rounded())
         let targetC = Int(targetCarbs.rounded())
 
-        let todayList = Array(todayEntries.prefix(6))
+        let contextItemsLimit = 10
+
+        let todayList = Array(todayEntries.prefix(contextItemsLimit))
 
         let fallbackRecent: [FoodEntry]
-        if todayList.count < 6 {
+        if todayList.count < contextItemsLimit {
             fallbackRecent = recentEntriesFallback(excludingDay: selectedDay, excluding: todayEntries)
         } else {
             fallbackRecent = []
         }
 
-        let favorites = Array(favoritesStore.load().prefix(6))
+        let favorites = Array(favoritesStore.load().prefix(contextItemsLimit))
 
         var lines: [String] = []
         lines.append("Цель КБЖУ на день: \(targetKcal) ккал; Б \(targetP) г; Ж \(targetF) г; У \(targetC) г")
@@ -331,7 +333,7 @@ final class FoodChatViewModel: ObservableObject {
             }
         }
 
-        lines.append("6 последних избранных блюд:")
+        lines.append("10 последних избранных блюд:")
         if favorites.isEmpty {
             lines.append("- нет")
         } else {
@@ -341,8 +343,8 @@ final class FoodChatViewModel: ObservableObject {
         }
 
         if !fallbackRecent.isEmpty {
-            lines.append("Дополнение из недавних (чтобы добрать до 6, если сегодня < 6):")
-            for (idx, entry) in fallbackRecent.prefix(max(0, 6 - todayList.count)).enumerated() {
+            lines.append("Дополнение из недавних (чтобы добрать до 10, если сегодня < 10):")
+            for (idx, entry) in fallbackRecent.prefix(max(0, contextItemsLimit - todayList.count)).enumerated() {
                 lines.append("- \(idx + 1). \(formatEntry(entry))")
             }
         }
@@ -370,7 +372,7 @@ final class FoodChatViewModel: ObservableObject {
                 if excludedSignatures.contains(sig) || seen.contains(sig) { continue }
                 seen.insert(sig)
                 collected.append(entry)
-                if collected.count >= 6 { return collected }
+                if collected.count >= 10 { return collected }
             }
         }
 
