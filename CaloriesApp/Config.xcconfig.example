@@ -1,0 +1,10 @@
+// Copy this file to Config.xcconfig and fill your local values.
+// Do not commit real secrets.
+
+OPENAI_API_KEY =
+OPENAI_MODEL = gpt-5-nano
+OPENAI_TRANSCRIBE_MODEL = whisper-1
+
+SUPABASE_URL = https\://ffcxmuucsmikutoqbzyk.supabase.co
+SUPABASE_PUBLISHABLE_KEY =
+SUPABASE_REDIRECT_URL = calories://auth-callback

@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14B67F0C5D91C3B4EBB92FC5 /* ChatHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */; };
+		19E97BAF8A5D39054C8E5541 /* RootTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8197ED657E6316F8C360352 /* RootTabsView.swift */; };
+		2E5E07572A83E610794A6017 /* AddFoodFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC5A837A08C78BDA12F6E41 /* AddFoodFlowView.swift */; };
+		3AF17D59B6A29B8CFA191E17 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DF886D8F5F95581760668 /* Models.swift */; };
+		4BD46C7390EF55D18207A02F /* FoodChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */; };
+		555AB93B17043FF4963FA5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3292AFB61C2534B8F2942BE9 /* Assets.xcassets */; };
+		65893C1E81A3A64DFCECD16B /* FoodChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */; };
+		6B9F2A1D3C4E5F60718293A4 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */; };
+		6B9F2A1D3C4E5F60718293A5 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */; };
+		6B9F2A1D3C4E5F60718293A7 /* SupabaseREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */; };
+		6B9F2A1D3C4E5F60718293A9 /* SupabaseSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */; };
+		7AC490BACD0604FE2C4692AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A74048A6A976A9738D15D /* SettingsView.swift */; };
+		97607C3E07375ECBFF47E33E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15F40E90C49F83582226D1C /* Notifications.swift */; };
+		A9B86DAC11931DA478EAA897 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257036EB4400A48639A8EEFF /* OpenAIClient.swift */; };
+		B408DB9528BF5496CA3E32E9 /* InfoPlistKeys.md in Resources */ = {isa = PBXBuildFile; fileRef = 9D3B017D63289AC7D0ED64CA /* InfoPlistKeys.md */; };
+		B6BE4E39401DDDA0A094CC0C /* CaloriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6224AE5AE056D25159A43DED /* CaloriesApp.swift */; };
+		B7156ECB460AA71C11289DD8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */; };
+		CDDB5244EA6C4C626CB88AEA /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129AF676BCD38755F85D61EE /* AppSettings.swift */; };
+		D1BFA6BFCB57DE62632FC272 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35A4D7897E309B87366371 /* HomeView.swift */; };
+		E8ECAAAF1FD7B7B205B12E52 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */; };
+		FCA8330918AD1A1A6618CD0F /* OpenAIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00AD5CF094543D3D9C783D64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0C35A4D7897E309B87366371 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		127A74048A6A976A9738D15D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		129AF676BCD38755F85D61EE /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryStore.swift; sourceTree = "<group>"; };
+		22BB52E4421C9B1929597B01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		257036EB4400A48639A8EEFF /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodChatViewModel.swift; sourceTree = "<group>"; };
+		3292AFB61C2534B8F2942BE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5671ECAABA4C437C275E9D50 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		6224AE5AE056D25159A43DED /* CaloriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesApp.swift; sourceTree = "<group>"; };
+		7109CFBBC5900E4665567AD3 /* Calories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calories.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodChatView.swift; sourceTree = "<group>"; };
+		6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
+		6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseREST.swift; sourceTree = "<group>"; };
+		6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseSessionStore.swift; sourceTree = "<group>"; };
+		8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		9D3B017D63289AC7D0ED64CA /* InfoPlistKeys.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = InfoPlistKeys.md; sourceTree = "<group>"; };
+		A00DF886D8F5F95581760668 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A6C3C304F4A12382FA0E8F68 /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
+		C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIConfig.swift; sourceTree = "<group>"; };
+		D15F40E90C49F83582226D1C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		E8197ED657E6316F8C360352 /* RootTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabsView.swift; sourceTree = "<group>"; };
+		EFC5A837A08C78BDA12F6E41 /* AddFoodFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodFlowView.swift; sourceTree = "<group>"; };
+		F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		21ECEE697F7B23591D24D952 = {
+			isa = PBXGroup;
+			children = (
+				3292AFB61C2534B8F2942BE9 /* Assets.xcassets */,
+				5671ECAABA4C437C275E9D50 /* Config.xcconfig */,
+				00AD5CF094543D3D9C783D64 /* Info.plist */,
+				A6C3C304F4A12382FA0E8F68 /* project.yml */,
+				FC7B94A4E643770CE1DECC14 /* Calories */,
+				2F79B6A565E32FC5B5C0CE53 /* CaloriesApp */,
+				2B9586F8E0595916C1F29D8C /* PreviewContent */,
+				2D3B4FB7A9241D07CE4DCBA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B9586F8E0595916C1F29D8C /* PreviewContent */ = {
+			isa = PBXGroup;
+			children = (
+				22BB52E4421C9B1929597B01 /* Preview Assets.xcassets */,
+			);
+			path = PreviewContent;
+			sourceTree = "<group>";
+		};
+		2D3B4FB7A9241D07CE4DCBA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7109CFBBC5900E4665567AD3 /* Calories.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F79B6A565E32FC5B5C0CE53 /* CaloriesApp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CaloriesApp;
+			path = .;
+			sourceTree = "<group>";
+		};
+		FC7B94A4E643770CE1DECC14 /* Calories */ = {
+			isa = PBXGroup;
+			children = (
+				EFC5A837A08C78BDA12F6E41 /* AddFoodFlowView.swift */,
+				129AF676BCD38755F85D61EE /* AppSettings.swift */,
+				F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */,
+				6224AE5AE056D25159A43DED /* CaloriesApp.swift */,
+				1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */,
+				7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */,
+				6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */,
+				6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */,
+				6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */,
+				6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */,
+				2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */,
+				0C35A4D7897E309B87366371 /* HomeView.swift */,
+				8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */,
+				9D3B017D63289AC7D0ED64CA /* InfoPlistKeys.md */,
+				A00DF886D8F5F95581760668 /* Models.swift */,
+				D15F40E90C49F83582226D1C /* Notifications.swift */,
+				257036EB4400A48639A8EEFF /* OpenAIClient.swift */,
+				C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */,
+				E8197ED657E6316F8C360352 /* RootTabsView.swift */,
+				127A74048A6A976A9738D15D /* SettingsView.swift */,
+			);
+			name = Calories;
+			path = Sources/Calories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8EA631FC1307558A516DBE57 /* Calories */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9483FED8EDD68BE523EB281 /* Build configuration list for PBXNativeTarget "Calories" */;
+			buildPhases = (
+				BC1A539286DF86C1E0083B42 /* Sources */,
+				B6FE66B326F39300E98A6E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Calories;
+			packageProductDependencies = (
+			);
+			productName = Calories;
+			productReference = 7109CFBBC5900E4665567AD3 /* Calories.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD880D29D624EDD7C4441FC8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2630;
+			};
+			buildConfigurationList = FA533166F089BE3E06C4C607 /* Build configuration list for PBXProject "Calories" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 21ECEE697F7B23591D24D952;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2D3B4FB7A9241D07CE4DCBA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8EA631FC1307558A516DBE57 /* Calories */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6FE66B326F39300E98A6E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				555AB93B17043FF4963FA5D7 /* Assets.xcassets in Resources */,
+				B408DB9528BF5496CA3E32E9 /* InfoPlistKeys.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC1A539286DF86C1E0083B42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E5E07572A83E610794A6017 /* AddFoodFlowView.swift in Sources */,
+				CDDB5244EA6C4C626CB88AEA /* AppSettings.swift in Sources */,
+				E8ECAAAF1FD7B7B205B12E52 /* AudioRecorder.swift in Sources */,
+				B6BE4E39401DDDA0A094CC0C /* CaloriesApp.swift in Sources */,
+				14B67F0C5D91C3B4EBB92FC5 /* ChatHistoryStore.swift in Sources */,
+				65893C1E81A3A64DFCECD16B /* FoodChatView.swift in Sources */,
+				6B9F2A1D3C4E5F60718293A4 /* FavoritesStore.swift in Sources */,
+				6B9F2A1D3C4E5F60718293A5 /* SupabaseConfig.swift in Sources */,
+				6B9F2A1D3C4E5F60718293A7 /* SupabaseREST.swift in Sources */,
+				6B9F2A1D3C4E5F60718293A9 /* SupabaseSessionStore.swift in Sources */,
+				4BD46C7390EF55D18207A02F /* FoodChatViewModel.swift in Sources */,
+				D1BFA6BFCB57DE62632FC272 /* HomeView.swift in Sources */,
+				B7156ECB460AA71C11289DD8 /* ImagePicker.swift in Sources */,
+				3AF17D59B6A29B8CFA191E17 /* Models.swift in Sources */,
+				97607C3E07375ECBFF47E33E /* Notifications.swift in Sources */,
+				A9B86DAC11931DA478EAA897 /* OpenAIClient.swift in Sources */,
+				FCA8330918AD1A1A6618CD0F /* OpenAIConfig.swift in Sources */,
+				19E97BAF8A5D39054C8E5541 /* RootTabsView.swift in Sources */,
+				7AC490BACD0604FE2C4692AC /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0CEE4CDBC40E1866F58D2D52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2B79CDBA1398797AE28B4D96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5671ECAABA4C437C275E9D50 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = PreviewContent;
+				DEVELOPMENT_TEAM = 8M74C284RN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		803A3A336A57E9180D5A2B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5671ECAABA4C437C275E9D50 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = PreviewContent;
+				DEVELOPMENT_TEAM = 8M74C284RN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F6B801DC5A62CBEDAB6DCCE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9483FED8EDD68BE523EB281 /* Build configuration list for PBXNativeTarget "Calories" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B801DC5A62CBEDAB6DCCE6 /* Debug */,
+				0CEE4CDBC40E1866F58D2D52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA533166F089BE3E06C4C607 /* Build configuration list for PBXProject "Calories" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B79CDBA1398797AE28B4D96 /* Debug */,
+				803A3A336A57E9180D5A2B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD880D29D624EDD7C4441FC8 /* Project object */;
+}
