@@ -335,6 +335,23 @@ struct FoodChatView: View {
         return base
     }
 
+    private func presentAddDaySheet(for entry: FoodEntry) {
+        let shouldDelayPresentation = isKeyboardVisible
+        dismissKeyboard()
+
+        let present = {
+            addDayCandidate = entry
+        }
+
+        if shouldDelayPresentation {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                present()
+            }
+        } else {
+            present()
+        }
+    }
+
     private func addRecentEntry(_ entry: FoodEntry, to day: Date) {
         let key = foodStore.dayKey(for: day)
         var entries = foodStore.load(dayKey: key)
@@ -579,12 +596,14 @@ struct FoodChatView: View {
                         .buttonStyle(CardPressFeedbackStyle())
                         .contextMenu {
                             Button {
-                                addDayCandidate = FoodEntry(
-                                    name: favorite.name,
-                                    calories: favorite.calories,
-                                    protein: favorite.protein,
-                                    fat: favorite.fat,
-                                    carbs: favorite.carbs
+                                presentAddDaySheet(
+                                    for: FoodEntry(
+                                        name: favorite.name,
+                                        calories: favorite.calories,
+                                        protein: favorite.protein,
+                                        fat: favorite.fat,
+                                        carbs: favorite.carbs
+                                    )
                                 )
                             } label: {
                                 Label("Добавить", systemImage: "plus.circle")
@@ -636,7 +655,7 @@ struct FoodChatView: View {
                         .buttonStyle(CardPressFeedbackStyle())
                         .contextMenu {
                             Button {
-                                addDayCandidate = entry
+                                presentAddDaySheet(for: entry)
                             } label: {
                                 Label("Добавить", systemImage: "plus.circle")
                             }
