@@ -42,17 +42,24 @@ final class FavoritesStore {
 
         Task {
             if let cloud = await SupabaseREST.fetchFavorites() {
-                let merged = mergeFavorites(local: local, cloud: cloud)
+                // Re-read local state to avoid resurrecting locally deleted favorites.
+                let latestLocal = self.loadLocalOnly()
+                let hasLocalSnapshot = self.hasLocalSnapshot()
 
-                if merged != local {
-                    saveLocalOnly(merged)
-                    await MainActor.run {
-                        NotificationCenter.default.post(name: .favoritesDidChange, object: nil)
+                // Fresh install / first open: hydrate from cloud only if local snapshot does not exist yet.
+                if !hasLocalSnapshot {
+                    if cloud != latestLocal {
+                        self.saveLocalOnly(cloud)
+                        await MainActor.run {
+                            NotificationCenter.default.post(name: .favoritesDidChange, object: nil)
+                        }
                     }
+                    return
                 }
 
-                if merged != cloud {
-                    await SupabaseREST.replaceFavorites(merged)
+                // Local snapshot exists -> treat it as source of truth for this device/session.
+                if latestLocal != cloud {
+                    await SupabaseREST.replaceFavorites(latestLocal)
                 }
             }
         }
@@ -105,14 +112,17 @@ final class FavoritesStore {
 
     func syncLocalToCloud() async {
         let local = loadLocalOnly()
+        let hasLocalSnapshot = hasLocalSnapshot()
         let cloud = await SupabaseREST.fetchFavorites() ?? []
-        let merged = mergeFavorites(local: local, cloud: cloud)
 
-        if merged != local {
-            saveLocalOnly(merged)
-        }
-        if merged != cloud {
-            await SupabaseREST.replaceFavorites(merged)
+        // If there is no local snapshot yet, seed local from cloud (first install/device).
+        if !hasLocalSnapshot {
+            if cloud != local {
+                saveLocalOnly(cloud)
+            }
+        } else if local != cloud {
+            // Existing local snapshot is authoritative.
+            await SupabaseREST.replaceFavorites(local)
         }
 
         await MainActor.run {
@@ -139,31 +149,15 @@ final class FavoritesStore {
         }
     }
 
-    private func mergeFavorites(local: [FavoriteFood], cloud: [FavoriteFood]) -> [FavoriteFood] {
-        var byId: [UUID: FavoriteFood] = [:]
-
-        for item in cloud {
-            byId[item.id] = item
-        }
-
-        for item in local {
-            if let existing = byId[item.id] {
-                byId[item.id] = item.createdAt >= existing.createdAt ? item : existing
-            } else {
-                byId[item.id] = item
-            }
-        }
-
-        return byId.values.sorted {
-            if $0.createdAt != $1.createdAt { return $0.createdAt > $1.createdAt }
-            return $0.id.uuidString < $1.id.uuidString
-        }
-    }
-
     private func favoritesURL() throws -> URL {
         let support = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return support
             .appendingPathComponent("Calories", isDirectory: true)
             .appendingPathComponent("favorites.json")
+    }
+
+    private func hasLocalSnapshot() -> Bool {
+        guard let url = try? favoritesURL() else { return false }
+        return fileManager.fileExists(atPath: url.path)
     }
 }
