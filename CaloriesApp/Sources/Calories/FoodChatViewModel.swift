@@ -354,17 +354,18 @@ final class FoodChatViewModel: ObservableObject {
 
     private func recentEntriesFallback(excludingDay selectedDay: Date, excluding todayEntries: [FoodEntry]) -> [FoodEntry] {
         let calendar = Calendar.current
-        let minDate = calendar.date(byAdding: .day, value: -28, to: selectedDay) ?? selectedDay
+        let startDay = calendar.startOfDay(for: selectedDay)
+        let minDate = calendar.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: startDay) ?? startDay
         let excludedSignatures = Set(todayEntries.map { entrySignature($0) })
 
         var collected: [FoodEntry] = []
         var seen = Set<String>()
 
-        for offset in 1...28 {
-            guard let day = calendar.date(byAdding: .day, value: -offset, to: selectedDay) else { continue }
-            if day < minDate { continue }
+        var day = calendar.date(byAdding: .day, value: -1, to: startDay)
+        while let currentDay = day, currentDay >= minDate {
+            defer { day = calendar.date(byAdding: .day, value: -1, to: currentDay) }
 
-            let dayKey = foodStore.dayKey(for: day)
+            let dayKey = foodStore.dayKey(for: currentDay)
             let entries = foodStore.load(dayKey: dayKey)
 
             for entry in entries.sorted(by: { $0.createdAt > $1.createdAt }) {

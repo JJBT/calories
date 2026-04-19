@@ -16,7 +16,7 @@ Log meals with **text, voice, or photos**, get AI nutrition estimates, and save 
   - Images
 - Confirmation step before registration
 - Reuse flow for faster logging:
-  - **Recent** (last 4 weeks)
+  - **Recent** (last 6 months)
   - **Favorites**
 - Edit or remove saved/favorite items
 

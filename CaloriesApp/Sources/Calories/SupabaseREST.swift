@@ -55,8 +55,8 @@ enum SupabaseREST {
                 )
             }
 
-            // Keep cloud table compact: remove food entries older than 4 weeks for this user.
-            let cutoff = dayKeyKeepingLast28Days()
+            // Keep cloud table compact: remove food entries older than retention window for this user.
+            let cutoff = dayKeyKeepingLastRetentionWindow()
             _ = try await request(
                 path: "/rest/v1/food_entries?user_id=eq.\(ctx.userId)&eaten_on=lt.\(cutoff)",
                 method: "DELETE",
@@ -282,10 +282,10 @@ enum SupabaseREST {
         return f
     }()
 
-    private static func dayKeyKeepingLast28Days(now: Date = .now) -> String {
+    private static func dayKeyKeepingLastRetentionWindow(now: Date = .now) -> String {
         let cal = Calendar.current
         let start = cal.startOfDay(for: now)
-        let cutoffDate = cal.date(byAdding: .day, value: -27, to: start) ?? start
+        let cutoffDate = cal.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: start) ?? start
         let comps = cal.dateComponents([.year, .month, .day], from: cutoffDate)
         return String(format: "%04d-%02d-%02d", comps.year ?? 0, comps.month ?? 0, comps.day ?? 0)
     }

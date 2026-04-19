@@ -407,11 +407,13 @@ struct FoodChatView: View {
         var cal = Calendar.current
         cal.firstWeekday = 2
         let today = cal.startOfDay(for: Date())
+        let minDate = cal.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: today) ?? today
 
         var lastUsageBySignature: [String: Date] = [:]
-        for i in 0..<28 {
-            guard let day = cal.date(byAdding: .day, value: -i, to: today) else { continue }
-            let key = foodStore.dayKey(for: day)
+        var day: Date? = today
+        while let currentDay = day, currentDay >= minDate {
+            defer { day = cal.date(byAdding: .day, value: -1, to: currentDay) }
+            let key = foodStore.dayKey(for: currentDay)
             for entry in foodStore.load(dayKey: key, syncCloud: false) {
                 let sig = recentSignature(for: entry)
                 if let old = lastUsageBySignature[sig] {
@@ -444,11 +446,13 @@ struct FoodChatView: View {
         var cal = Calendar.current
         cal.firstWeekday = 2
         let today = cal.startOfDay(for: Date())
+        let minDate = cal.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: today) ?? today
         let oldSig = favoriteSignature(for: old)
 
-        for i in 0..<28 {
-            guard let day = cal.date(byAdding: .day, value: -i, to: today) else { continue }
-            let key = foodStore.dayKey(for: day)
+        var day: Date? = today
+        while let currentDay = day, currentDay >= minDate {
+            defer { day = cal.date(byAdding: .day, value: -1, to: currentDay) }
+            let key = foodStore.dayKey(for: currentDay)
             var entries = foodStore.load(dayKey: key, syncCloud: false)
             var changed = false
 
@@ -489,11 +493,13 @@ struct FoodChatView: View {
         var cal = Calendar.current
         cal.firstWeekday = 2
         let today = cal.startOfDay(for: Date())
+        let minDate = cal.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: today) ?? today
         var all: [FoodEntry] = []
 
-        for i in 0..<28 {
-            guard let day = cal.date(byAdding: .day, value: -i, to: today) else { continue }
-            let key = foodStore.dayKey(for: day)
+        var day: Date? = today
+        while let currentDay = day, currentDay >= minDate {
+            defer { day = cal.date(byAdding: .day, value: -1, to: currentDay) }
+            let key = foodStore.dayKey(for: currentDay)
             all.append(contentsOf: foodStore.load(dayKey: key, syncCloud: false))
         }
 

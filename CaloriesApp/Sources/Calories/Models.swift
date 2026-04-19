@@ -57,9 +57,10 @@ struct FoodEntry: Identifiable, Codable, Equatable {
 }
 
 final class FoodLogStore {
+    static let retentionMonths = 6
+
     private let fileManager: FileManager
     private let calendar: Calendar
-    private let retentionDays = 28
 
     init(fileManager: FileManager = .default, calendar: Calendar = .current) {
         self.fileManager = fileManager
@@ -192,7 +193,8 @@ final class FoodLogStore {
         guard let dir = try? baseDirURL(),
               let files = try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return }
 
-        let cutoff = calendar.startOfDay(for: now).addingTimeInterval(TimeInterval(-(retentionDays - 1) * 86_400))
+        let today = calendar.startOfDay(for: now)
+        let cutoff = calendar.date(byAdding: .month, value: -Self.retentionMonths, to: today) ?? today
 
         for file in files where file.pathExtension == "json" {
             let key = file.deletingPathExtension().lastPathComponent
