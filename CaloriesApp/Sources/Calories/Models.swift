@@ -134,6 +134,31 @@ final class FoodLogStore {
         }
     }
 
+    func loadAllLocalDays() -> [(dayKey: String, entries: [FoodEntry])] {
+        pruneOldData()
+        guard let dir = try? baseDirURL(),
+              let files = try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return [] }
+
+        var rows: [(dayKey: String, entries: [FoodEntry])] = []
+
+        for file in files where file.pathExtension == "json" {
+            let key = file.deletingPathExtension().lastPathComponent
+            let parts = key.split(separator: "-")
+            guard parts.count == 3,
+                  Int(parts[0]) != nil, Int(parts[1]) != nil, Int(parts[2]) != nil else { continue }
+
+            let entries = loadLocalOnly(dayKey: key).sorted {
+                if $0.createdAt != $1.createdAt { return $0.createdAt < $1.createdAt }
+                return $0.id.uuidString < $1.id.uuidString
+            }
+            if !entries.isEmpty {
+                rows.append((dayKey: key, entries: entries))
+            }
+        }
+
+        return rows.sorted { $0.dayKey < $1.dayKey }
+    }
+
     private func loadLocalOnly(dayKey: String) -> [FoodEntry] {
         guard let url = try? entriesURL(dayKey: dayKey),
               fileManager.fileExists(atPath: url.path),

@@ -1,10 +1,16 @@
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject private var settings: AppSettings
     @EnvironmentObject private var session: SupabaseSessionStore
 
     @State private var showSignOutConfirm = false
+    @State private var showExportSheet = false
+    @State private var exportURL: URL?
+    @State private var exportErrorMessage: String?
+
+    private let foodStore = FoodLogStore()
 
     var body: some View {
         Form {
@@ -70,6 +76,14 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
             }
+
+            Section {
+                Button {
+                    exportFoodLogCSV()
+                } label: {
+                    Label("Экспортировать данные (CSV)", systemImage: "square.and.arrow.up")
+                }
+            }
         }
         .navigationTitle("Настройки")
         .alert("Выйти из аккаунта?", isPresented: $showSignOutConfirm) {
@@ -80,7 +94,99 @@ struct SettingsView: View {
         } message: {
             Text("Вы сможете войти снова в любой момент.")
         }
+        .alert("Не удалось экспортировать", isPresented: Binding(
+            get: { exportErrorMessage != nil },
+            set: { if !$0 { exportErrorMessage = nil } }
+        )) {
+            Button("Ок", role: .cancel) {
+                exportErrorMessage = nil
+            }
+        } message: {
+            Text(exportErrorMessage ?? "")
+        }
+        .sheet(isPresented: $showExportSheet, onDismiss: {
+            exportURL = nil
+        }) {
+            if let exportURL {
+                ShareSheet(activityItems: [exportURL])
+            }
+        }
     }
+
+    private func exportFoodLogCSV() {
+        let days = foodStore.loadAllLocalDays()
+        let csv = buildCSV(days: days)
+        let fileName = "calories-export-\(timestampString()).csv"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+
+        do {
+            try csv.write(to: url, atomically: true, encoding: .utf8)
+            exportURL = url
+            showExportSheet = true
+        } catch {
+            exportErrorMessage = "Не удалось создать CSV-файл."
+        }
+    }
+
+    private func buildCSV(days: [(dayKey: String, entries: [FoodEntry])]) -> String {
+        var lines: [String] = []
+        lines.append("date,food,calories,protein,fat,carbs,daily_calories,daily_protein,daily_fat,daily_carbs")
+
+        for day in days {
+            let totalCalories = day.entries.reduce(0) { $0 + $1.calories }
+            let totalProtein = day.entries.reduce(0) { $0 + $1.protein }
+            let totalFat = day.entries.reduce(0) { $0 + $1.fat }
+            let totalCarbs = day.entries.reduce(0) { $0 + $1.carbs }
+
+            for entry in day.entries {
+                lines.append(
+                    [
+                        csvEscape(day.dayKey),
+                        csvEscape(entry.name),
+                        csvNumber(entry.calories),
+                        csvNumber(entry.protein),
+                        csvNumber(entry.fat),
+                        csvNumber(entry.carbs),
+                        csvNumber(totalCalories),
+                        csvNumber(totalProtein),
+                        csvNumber(totalFat),
+                        csvNumber(totalCarbs)
+                    ].joined(separator: ",")
+                )
+            }
+        }
+
+        return lines.joined(separator: "\n")
+    }
+
+    private func csvEscape(_ value: String) -> String {
+        let escaped = value.replacingOccurrences(of: "\"", with: "\"\"")
+        return "\"\(escaped)\""
+    }
+
+    private func csvNumber(_ value: Double) -> String {
+        if value.rounded() == value {
+            return String(Int(value))
+        }
+        return String(format: "%.1f", value)
+    }
+
+    private func timestampString(now: Date = .now) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyyMMdd-HHmmss"
+        return formatter.string(from: now)
+    }
+}
+
+private struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 private enum AccountAuthMode {
