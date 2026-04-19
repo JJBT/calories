@@ -646,7 +646,7 @@ struct FoodChatView: View {
         ScrollView {
             LazyVStack(spacing: 10) {
                 if filteredRecentEntries.isEmpty {
-                    Text(recentEntries.isEmpty ? "За последние 4 недели записей пока нет" : "Ничего не найдено")
+                    Text(recentEntries.isEmpty ? "За последние 6 месяцев записей пока нет" : "Ничего не найдено")
                         .font(.system(size: 14, weight: .regular))
                         .foregroundStyle(Color.appTextSecondary)
                         .frame(maxWidth: .infinity, alignment: .leading)

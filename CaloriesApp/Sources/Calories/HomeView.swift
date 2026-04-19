@@ -9,7 +9,7 @@ struct HomeView: View {
     @State private var deleteCandidate: FoodEntry?
     @State private var repeatCandidate: FoodEntry?
     @State private var favoritesMessage: String?
-    @State private var weekOffset = 0 // 0 = текущая неделя, 1...3 = прошлые
+    @State private var weekOffset = 0 // 0 = текущая неделя, 1...N = прошлые
 
     private let foodStore = FoodLogStore()
     private let favoritesStore = FavoritesStore()
@@ -29,8 +29,7 @@ struct HomeView: View {
     }
 
     private var currentWeekStart: Date {
-        let weekday = calendar.component(.weekday, from: today)
-        return calendar.date(byAdding: .day, value: -(weekday - calendar.firstWeekday + 7) % 7, to: today) ?? today
+        weekStart(for: today)
     }
 
     private var displayedWeekStart: Date {
@@ -46,7 +45,20 @@ struct HomeView: View {
     }
 
     private var oldestAllowedDay: Date {
-        calendar.date(byAdding: .day, value: -27, to: today) ?? today
+        calendar.date(byAdding: .month, value: -FoodLogStore.retentionMonths, to: today) ?? today
+    }
+
+    private var oldestAllowedWeekStart: Date {
+        weekStart(for: oldestAllowedDay)
+    }
+
+    private var weekPageCount: Int {
+        let days = calendar.dateComponents([.day], from: oldestAllowedWeekStart, to: currentWeekStart).day ?? 0
+        return max(1, days / 7 + 1)
+    }
+
+    private var maxWeekOffset: Int {
+        weekPageCount - 1
     }
 
     private var chatEditableFromDay: Date {
@@ -55,6 +67,12 @@ struct HomeView: View {
 
     private var canChatForSelectedDay: Bool {
         selectedDay >= chatEditableFromDay && selectedDay <= today
+    }
+
+    private func weekStart(for date: Date) -> Date {
+        let startOfDay = calendar.startOfDay(for: date)
+        let weekday = calendar.component(.weekday, from: startOfDay)
+        return calendar.date(byAdding: .day, value: -(weekday - calendar.firstWeekday + 7) % 7, to: startOfDay) ?? startOfDay
     }
 
     private var consumedCalories: Int { Int(foodEntries.reduce(0) { $0 + $1.calories }.rounded()) }
@@ -194,7 +212,7 @@ struct HomeView: View {
 
     private func syncWeekOffsetWithSelectedDay() {
         let days = calendar.dateComponents([.day], from: selectedDay, to: today).day ?? 0
-        let normalized = max(0, min(3, days / 7))
+        let normalized = max(0, min(maxWeekOffset, days / 7))
         weekOffset = normalized
     }
 
@@ -302,14 +320,15 @@ struct HomeView: View {
     }
 
     private var calendarStrip: some View {
+        let newestPageIndex = maxWeekOffset
         let pageBinding = Binding<Int>(
-            get: { 3 - weekOffset },
-            set: { newValue in weekOffset = max(0, min(3, 3 - newValue)) }
+            get: { newestPageIndex - weekOffset },
+            set: { newValue in weekOffset = max(0, min(maxWeekOffset, newestPageIndex - newValue)) }
         )
 
         return TabView(selection: pageBinding) {
-            ForEach(0..<4, id: \.self) { pageIndex in
-                let offsetFromTodayWeek = 3 - pageIndex
+            ForEach(0..<weekPageCount, id: \.self) { pageIndex in
+                let offsetFromTodayWeek = newestPageIndex - pageIndex
                 let start = calendar.date(byAdding: .day, value: -offsetFromTodayWeek * 7, to: currentWeekStart) ?? currentWeekStart
                 weekStrip(start: start)
                     .tag(pageIndex)
