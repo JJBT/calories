@@ -12,6 +12,8 @@ private struct MacroWidgetEntry: TimelineEntry {
 }
 
 private struct MacroWidgetProvider: TimelineProvider {
+    private let dayRolloverHour = 6
+
     func placeholder(in context: Context) -> MacroWidgetEntry {
         MacroWidgetEntry(
             date: .now,
@@ -31,17 +33,33 @@ private struct MacroWidgetProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<MacroWidgetEntry>) -> Void) {
         let now = Date()
         let entry = MacroDataLoader().loadEntry(at: now)
-        let refresh = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(15 * 60)
+        let calendar = Calendar.current
+        let regularRefresh = calendar.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(15 * 60)
+        let nextRollover = nextRolloverDate(after: now, calendar: calendar)
+        let refresh = min(regularRefresh, nextRollover)
         completion(Timeline(entries: [entry], policy: .after(refresh)))
+    }
+
+    private func nextRolloverDate(after date: Date, calendar: Calendar) -> Date {
+        let startOfToday = calendar.startOfDay(for: date)
+        let todayRollover = calendar.date(byAdding: .hour, value: dayRolloverHour, to: startOfToday) ?? date
+        if date < todayRollover {
+            return todayRollover
+        }
+
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: startOfToday) ?? date
+        return calendar.date(byAdding: .hour, value: dayRolloverHour, to: tomorrow) ?? date
     }
 }
 
 private struct MacroDataLoader {
     private let fileManager = FileManager.default
+    private let dayRolloverHour = 6
 
     func loadEntry(at date: Date) -> MacroWidgetEntry {
         let calendar = Calendar.current
-        let dayKey = DayKey.from(date, calendar: calendar)
+        let effectiveDate = calendar.date(byAdding: .hour, value: -dayRolloverHour, to: date) ?? date
+        let dayKey = DayKey.from(effectiveDate, calendar: calendar)
         let entries = loadEntries(dayKey: dayKey)
 
         let consumedProtein = Int(entries.reduce(0) { $0 + $1.protein }.rounded())
