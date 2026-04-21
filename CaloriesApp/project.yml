@@ -4,6 +4,8 @@ name: Calories
 fileGroups:
   - Config.xcconfig
   - Info.plist
+  - Calories.entitlements
+  - CaloriesWidget
   - project.yml
   - PreviewContent
 
@@ -25,7 +27,9 @@ configFiles:
 
 settings:
   base:
-    PRODUCT_BUNDLE_IDENTIFIER: dev.calories.calories
+    PRODUCT_BUNDLE_IDENTIFIER: dev.calories.calories1
+    DEVELOPMENT_TEAM: 8M74C284RN
+    CODE_SIGN_STYLE: Automatic
     SWIFT_VERSION: "5.0"
     INFOPLIST_FILE: Info.plist
     DEVELOPMENT_ASSET_PATHS: "PreviewContent"
@@ -36,9 +40,32 @@ targets:
     type: application
     platform: iOS
     sources:
+      - path: Sources/Shared
       - path: Sources/Calories
+        excludes:
+          - FoodLogStore.swift
       - path: Assets.xcassets
+    dependencies:
+      - target: CaloriesWidget
+        embed: true
+    settings:
+      base:
+        CODE_SIGN_ENTITLEMENTS: Calories.entitlements
     # PreviewContent не включаем в build resources, только для SwiftUI Previews
     scheme:
       testTargets: []
       gatherCoverageData: false
+
+  CaloriesWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Sources/Shared
+      - path: Sources/CaloriesWidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.calories.calories1.widget
+        INFOPLIST_FILE: CaloriesWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: CaloriesWidget/CaloriesWidget.entitlements
+        SKIP_INSTALL: YES
+        APPLICATION_EXTENSION_API_ONLY: YES

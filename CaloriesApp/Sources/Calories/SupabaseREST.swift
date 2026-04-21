@@ -86,6 +86,27 @@ enum SupabaseREST {
         }
     }
 
+    static func fetchFoodEntriesSince(dayKeyFrom: String) async -> [String: [FoodEntry]]? {
+        guard let ctx = context else { return nil }
+        do {
+            let data = try await request(
+                path: "/rest/v1/food_entries?user_id=eq.\(ctx.userId)&eaten_on=gte.\(dayKeyFrom)&select=id,name,calories,protein,fat,carbs,source,created_at,eaten_on&order=eaten_on.asc,created_at.asc",
+                method: "GET",
+                body: nil,
+                prefer: nil,
+                context: ctx
+            )
+            let rows = try makeDecoder().decode([FoodDayRow].self, from: data)
+            var grouped: [String: [FoodEntry]] = [:]
+            for row in rows {
+                grouped[row.eaten_on, default: []].append(row.toEntry)
+            }
+            return grouped
+        } catch {
+            return nil
+        }
+    }
+
     static func replaceFavorites(_ favorites: [FavoriteFood]) async {
         guard let ctx = context else { return }
         do {
@@ -312,6 +333,22 @@ enum SupabaseREST {
         let carbs: Double
         let source: String?
         let created_at: Date
+
+        var toEntry: FoodEntry {
+            FoodEntry(id: id, name: name, calories: calories, protein: protein, fat: fat, carbs: carbs, source: source, createdAt: created_at)
+        }
+    }
+
+    private struct FoodDayRow: Decodable {
+        let id: UUID
+        let name: String
+        let calories: Double
+        let protein: Double
+        let fat: Double
+        let carbs: Double
+        let source: String?
+        let created_at: Date
+        let eaten_on: String
 
         var toEntry: FoodEntry {
             FoodEntry(id: id, name: name, calories: calories, protein: protein, fat: fat, carbs: carbs, source: source, createdAt: created_at)

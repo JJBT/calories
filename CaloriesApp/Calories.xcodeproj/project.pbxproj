@@ -7,28 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CEB3280390DF620B84B5CDC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA991D107614352495D07B /* Theme.swift */; };
 		14B67F0C5D91C3B4EBB92FC5 /* ChatHistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */; };
 		19E97BAF8A5D39054C8E5541 /* RootTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8197ED657E6316F8C360352 /* RootTabsView.swift */; };
+		1B105E4E7ECEBB1D59A63643 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2D49A291D593BA5738F42 /* FavoritesStore.swift */; };
 		2E5E07572A83E610794A6017 /* AddFoodFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC5A837A08C78BDA12F6E41 /* AddFoodFlowView.swift */; };
 		3AF17D59B6A29B8CFA191E17 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DF886D8F5F95581760668 /* Models.swift */; };
+		3B06A8C14F8C509AEFAD3CF4 /* CaloriesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C0D684F152D690BC5F342 /* CaloriesWidget.swift */; };
+		40AEF671B6CF1AB34A719467 /* SupabaseREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67EA3A40F2CD6514F8BFEF /* SupabaseREST.swift */; };
 		4BD46C7390EF55D18207A02F /* FoodChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */; };
 		555AB93B17043FF4963FA5D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3292AFB61C2534B8F2942BE9 /* Assets.xcassets */; };
 		65893C1E81A3A64DFCECD16B /* FoodChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */; };
-		6B9F2A1D3C4E5F60718293A4 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */; };
-		6B9F2A1D3C4E5F60718293A5 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */; };
-		6B9F2A1D3C4E5F60718293A7 /* SupabaseREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */; };
-		6B9F2A1D3C4E5F60718293A9 /* SupabaseSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */; };
 		7AC490BACD0604FE2C4692AC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127A74048A6A976A9738D15D /* SettingsView.swift */; };
+		869966B8074CC257E856AE2C /* SupabaseSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079150C22D00B984EAF2B10 /* SupabaseSessionStore.swift */; };
+		943BE7BF5FA62E9DACBA5EDA /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3ECDE8E514C8160BF3D09 /* SharedStorage.swift */; };
 		97607C3E07375ECBFF47E33E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15F40E90C49F83582226D1C /* Notifications.swift */; };
 		A9B86DAC11931DA478EAA897 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257036EB4400A48639A8EEFF /* OpenAIClient.swift */; };
+		AB5433F77745FD30817DDF4F /* CaloriesWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D964D1DBF9B818DFFB481C1 /* CaloriesWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B408DB9528BF5496CA3E32E9 /* InfoPlistKeys.md in Resources */ = {isa = PBXBuildFile; fileRef = 9D3B017D63289AC7D0ED64CA /* InfoPlistKeys.md */; };
 		B6BE4E39401DDDA0A094CC0C /* CaloriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6224AE5AE056D25159A43DED /* CaloriesApp.swift */; };
 		B7156ECB460AA71C11289DD8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */; };
+		C5B02000D1F8B9A6FEC83786 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3ECDE8E514C8160BF3D09 /* SharedStorage.swift */; };
 		CDDB5244EA6C4C626CB88AEA /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129AF676BCD38755F85D61EE /* AppSettings.swift */; };
 		D1BFA6BFCB57DE62632FC272 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35A4D7897E309B87366371 /* HomeView.swift */; };
 		E8ECAAAF1FD7B7B205B12E52 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */; };
 		FCA8330918AD1A1A6618CD0F /* OpenAIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */; };
+		FF8B88AC7A4DAA9E6C796391 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD0EF043A06EE44EF2A2FFA /* SupabaseConfig.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		938F0797BA800945636C9907 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD880D29D624EDD7C4441FC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE4DDD1814DAF34DBD282E40;
+			remoteInfo = CaloriesWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C953F45911762FABC3C0E3D7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AB5433F77745FD30817DDF4F /* CaloriesWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00AD5CF094543D3D9C783D64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -36,27 +65,34 @@
 		127A74048A6A976A9738D15D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		129AF676BCD38755F85D61EE /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryStore.swift; sourceTree = "<group>"; };
+		1D964D1DBF9B818DFFB481C1 /* CaloriesWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CaloriesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DD3ECDE8E514C8160BF3D09 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
 		22BB52E4421C9B1929597B01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		23032F7E04E6F06135A338FC /* Calories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calories.entitlements; sourceTree = "<group>"; };
 		257036EB4400A48639A8EEFF /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
 		2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodChatViewModel.swift; sourceTree = "<group>"; };
 		3292AFB61C2534B8F2942BE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E67EA3A40F2CD6514F8BFEF /* SupabaseREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseREST.swift; sourceTree = "<group>"; };
 		5671ECAABA4C437C275E9D50 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		6224AE5AE056D25159A43DED /* CaloriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesApp.swift; sourceTree = "<group>"; };
-		7109CFBBC5900E4665567AD3 /* Calories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calories.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD0EF043A06EE44EF2A2FFA /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
+		7109CFBBC5900E4665567AD3 /* Calories.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Calories.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF8A57B753C2E6A23D3E9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodChatView.swift; sourceTree = "<group>"; };
-		6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
-		6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
-		6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseREST.swift; sourceTree = "<group>"; };
-		6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseSessionStore.swift; sourceTree = "<group>"; };
 		8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9D3B017D63289AC7D0ED64CA /* InfoPlistKeys.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = InfoPlistKeys.md; sourceTree = "<group>"; };
 		A00DF886D8F5F95581760668 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A03C0D684F152D690BC5F342 /* CaloriesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesWidget.swift; sourceTree = "<group>"; };
+		A686C7BB832AAF50F650C12F /* CaloriesWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CaloriesWidget.entitlements; sourceTree = "<group>"; };
 		A6C3C304F4A12382FA0E8F68 /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
 		C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIConfig.swift; sourceTree = "<group>"; };
+		D079150C22D00B984EAF2B10 /* SupabaseSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseSessionStore.swift; sourceTree = "<group>"; };
 		D15F40E90C49F83582226D1C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		D3C2D49A291D593BA5738F42 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
 		E8197ED657E6316F8C360352 /* RootTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabsView.swift; sourceTree = "<group>"; };
 		EFC5A837A08C78BDA12F6E41 /* AddFoodFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodFlowView.swift; sourceTree = "<group>"; };
 		F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		F6BA991D107614352495D07B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -64,12 +100,16 @@
 			isa = PBXGroup;
 			children = (
 				3292AFB61C2534B8F2942BE9 /* Assets.xcassets */,
+				23032F7E04E6F06135A338FC /* Calories.entitlements */,
 				5671ECAABA4C437C275E9D50 /* Config.xcconfig */,
 				00AD5CF094543D3D9C783D64 /* Info.plist */,
 				A6C3C304F4A12382FA0E8F68 /* project.yml */,
 				FC7B94A4E643770CE1DECC14 /* Calories */,
 				2F79B6A565E32FC5B5C0CE53 /* CaloriesApp */,
+				DBD335D48AFB6F6ABFCBB2AD /* CaloriesWidget */,
+				B3200F463F4BC7FBD6C8F697 /* CaloriesWidget */,
 				2B9586F8E0595916C1F29D8C /* PreviewContent */,
+				8DC8114CA2C2643008489A2A /* Shared */,
 				2D3B4FB7A9241D07CE4DCBA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				7109CFBBC5900E4665567AD3 /* Calories.app */,
+				1D964D1DBF9B818DFFB481C1 /* CaloriesWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,9 +134,37 @@
 		2F79B6A565E32FC5B5C0CE53 /* CaloriesApp */ = {
 			isa = PBXGroup;
 			children = (
+				5671ECAABA4C437C275E9D50 /* Config.xcconfig */,
 			);
 			name = CaloriesApp;
 			path = .;
+			sourceTree = "<group>";
+		};
+		8DC8114CA2C2643008489A2A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1DD3ECDE8E514C8160BF3D09 /* SharedStorage.swift */,
+			);
+			name = Shared;
+			path = Sources/Shared;
+			sourceTree = "<group>";
+		};
+		B3200F463F4BC7FBD6C8F697 /* CaloriesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A03C0D684F152D690BC5F342 /* CaloriesWidget.swift */,
+			);
+			name = CaloriesWidget;
+			path = Sources/CaloriesWidget;
+			sourceTree = "<group>";
+		};
+		DBD335D48AFB6F6ABFCBB2AD /* CaloriesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A686C7BB832AAF50F650C12F /* CaloriesWidget.entitlements */,
+				7BF8A57B753C2E6A23D3E9BD /* Info.plist */,
+			);
+			path = CaloriesWidget;
 			sourceTree = "<group>";
 		};
 		FC7B94A4E643770CE1DECC14 /* Calories */ = {
@@ -106,11 +175,8 @@
 				F63AA9F09DC1F9D1D1370075 /* AudioRecorder.swift */,
 				6224AE5AE056D25159A43DED /* CaloriesApp.swift */,
 				1868B9DF0E8541085861AE33 /* ChatHistoryStore.swift */,
+				D3C2D49A291D593BA5738F42 /* FavoritesStore.swift */,
 				7F84C7DD7D6F51F82FDC6D34 /* FoodChatView.swift */,
-				6B9F2A1D3C4E5F60718293A3 /* FavoritesStore.swift */,
-				6B9F2A1D3C4E5F60718293A6 /* SupabaseConfig.swift */,
-				6B9F2A1D3C4E5F60718293A8 /* SupabaseREST.swift */,
-				6B9F2A1D3C4E5F60718293AA /* SupabaseSessionStore.swift */,
 				2D818E11F54CD5060BEE0590 /* FoodChatViewModel.swift */,
 				0C35A4D7897E309B87366371 /* HomeView.swift */,
 				8C9DC3ECA2FADF1BD1C471E1 /* ImagePicker.swift */,
@@ -121,6 +187,10 @@
 				C325D4DD80CD865A444C1E02 /* OpenAIConfig.swift */,
 				E8197ED657E6316F8C360352 /* RootTabsView.swift */,
 				127A74048A6A976A9738D15D /* SettingsView.swift */,
+				6BD0EF043A06EE44EF2A2FFA /* SupabaseConfig.swift */,
+				4E67EA3A40F2CD6514F8BFEF /* SupabaseREST.swift */,
+				D079150C22D00B984EAF2B10 /* SupabaseSessionStore.swift */,
+				F6BA991D107614352495D07B /* Theme.swift */,
 			);
 			name = Calories;
 			path = Sources/Calories;
@@ -135,10 +205,12 @@
 			buildPhases = (
 				BC1A539286DF86C1E0083B42 /* Sources */,
 				B6FE66B326F39300E98A6E6F /* Resources */,
+				C953F45911762FABC3C0E3D7 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8A7F2263F49EEC02789844F7 /* PBXTargetDependency */,
 			);
 			name = Calories;
 			packageProductDependencies = (
@@ -147,6 +219,23 @@
 			productReference = 7109CFBBC5900E4665567AD3 /* Calories.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EE4DDD1814DAF34DBD282E40 /* CaloriesWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C73A3CBDC96D0B2A3BF21A1A /* Build configuration list for PBXNativeTarget "CaloriesWidget" */;
+			buildPhases = (
+				06B10A8694B7136DFB67F357 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CaloriesWidget;
+			packageProductDependencies = (
+			);
+			productName = CaloriesWidget;
+			productReference = 1D964D1DBF9B818DFFB481C1 /* CaloriesWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -154,7 +243,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					8EA631FC1307558A516DBE57 = {
+						DevelopmentTeam = 8M74C284RN;
+						ProvisioningStyle = Automatic;
+					};
+					EE4DDD1814DAF34DBD282E40 = {
+						DevelopmentTeam = 8M74C284RN;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = FA533166F089BE3E06C4C607 /* Build configuration list for PBXProject "Calories" */;
 			developmentRegion = en;
@@ -171,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				8EA631FC1307558A516DBE57 /* Calories */,
+				EE4DDD1814DAF34DBD282E40 /* CaloriesWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +288,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		06B10A8694B7136DFB67F357 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B06A8C14F8C509AEFAD3CF4 /* CaloriesWidget.swift in Sources */,
+				C5B02000D1F8B9A6FEC83786 /* SharedStorage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC1A539286DF86C1E0083B42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,11 +306,8 @@
 				E8ECAAAF1FD7B7B205B12E52 /* AudioRecorder.swift in Sources */,
 				B6BE4E39401DDDA0A094CC0C /* CaloriesApp.swift in Sources */,
 				14B67F0C5D91C3B4EBB92FC5 /* ChatHistoryStore.swift in Sources */,
+				1B105E4E7ECEBB1D59A63643 /* FavoritesStore.swift in Sources */,
 				65893C1E81A3A64DFCECD16B /* FoodChatView.swift in Sources */,
-				6B9F2A1D3C4E5F60718293A4 /* FavoritesStore.swift in Sources */,
-				6B9F2A1D3C4E5F60718293A5 /* SupabaseConfig.swift in Sources */,
-				6B9F2A1D3C4E5F60718293A7 /* SupabaseREST.swift in Sources */,
-				6B9F2A1D3C4E5F60718293A9 /* SupabaseSessionStore.swift in Sources */,
 				4BD46C7390EF55D18207A02F /* FoodChatViewModel.swift in Sources */,
 				D1BFA6BFCB57DE62632FC272 /* HomeView.swift in Sources */,
 				B7156ECB460AA71C11289DD8 /* ImagePicker.swift in Sources */,
@@ -211,28 +317,75 @@
 				FCA8330918AD1A1A6618CD0F /* OpenAIConfig.swift in Sources */,
 				19E97BAF8A5D39054C8E5541 /* RootTabsView.swift in Sources */,
 				7AC490BACD0604FE2C4692AC /* SettingsView.swift in Sources */,
+				943BE7BF5FA62E9DACBA5EDA /* SharedStorage.swift in Sources */,
+				FF8B88AC7A4DAA9E6C796391 /* SupabaseConfig.swift in Sources */,
+				40AEF671B6CF1AB34A719467 /* SupabaseREST.swift in Sources */,
+				869966B8074CC257E856AE2C /* SupabaseSessionStore.swift in Sources */,
+				0CEB3280390DF620B84B5CDC /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8A7F2263F49EEC02789844F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE4DDD1814DAF34DBD282E40 /* CaloriesWidget */;
+			targetProxy = 938F0797BA800945636C9907 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0B0864558B8E9EDBCA065F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CaloriesWidget/CaloriesWidget.entitlements;
+				INFOPLIST_FILE = CaloriesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		0CEE4CDBC40E1866F58D2D52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Calories.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		29BD796AA9F7E4F9746DBB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CaloriesWidget/CaloriesWidget.entitlements;
+				INFOPLIST_FILE = CaloriesWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		2B79CDBA1398797AE28B4D96 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -240,7 +393,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -270,13 +422,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = PreviewContent;
 				DEVELOPMENT_TEAM = 8M74C284RN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -296,10 +448,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -312,7 +463,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -342,13 +492,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = PreviewContent;
 				DEVELOPMENT_TEAM = 8M74C284RN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -361,10 +511,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -375,14 +524,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Calories.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.calories.calories1;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -391,6 +538,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C73A3CBDC96D0B2A3BF21A1A /* Build configuration list for PBXNativeTarget "CaloriesWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29BD796AA9F7E4F9746DBB88 /* Debug */,
+				0B0864558B8E9EDBCA065F98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		D9483FED8EDD68BE523EB281 /* Build configuration list for PBXNativeTarget "Calories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

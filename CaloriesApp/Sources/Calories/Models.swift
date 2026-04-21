@@ -58,6 +58,7 @@ struct FoodEntry: Identifiable, Codable, Equatable {
 
 final class FoodLogStore {
     static let retentionMonths = 6
+    private static var didAttemptLegacyMigration = false
 
     private let fileManager: FileManager
     private let calendar: Calendar
@@ -68,11 +69,11 @@ final class FoodLogStore {
     }
 
     func dayKey(for date: Date) -> String {
-        let comps = calendar.dateComponents([.year, .month, .day], from: date)
-        return String(format: "%04d-%02d-%02d", comps.year ?? 0, comps.month ?? 0, comps.day ?? 0)
+        DayKey.from(date, calendar: calendar)
     }
 
     func load(dayKey: String, syncCloud: Bool = true) -> [FoodEntry] {
+        migrateLegacyDataIfNeeded()
         pruneOldData()
         let local = loadLocalOnly(dayKey: dayKey)
 
@@ -107,6 +108,7 @@ final class FoodLogStore {
     }
 
     func save(_ entries: [FoodEntry], dayKey: String) {
+        migrateLegacyDataIfNeeded()
         saveLocalOnly(entries, dayKey: dayKey)
         Task {
             await SupabaseREST.replaceFoodEntries(dayKey: dayKey, entries: entries)
@@ -114,6 +116,7 @@ final class FoodLogStore {
     }
 
     func syncAllLocalDaysToCloud() async {
+        migrateLegacyDataIfNeeded()
         pruneOldData()
         guard let dir = try? baseDirURL(),
               let files = try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return }
@@ -134,7 +137,29 @@ final class FoodLogStore {
         }
     }
 
+    func hydrateRecentDaysFromCloud() async {
+        migrateLegacyDataIfNeeded()
+        pruneOldData()
+
+        let today = calendar.startOfDay(for: .now)
+        let cutoff = calendar.date(byAdding: .month, value: -Self.retentionMonths, to: today) ?? today
+        let fromDayKey = dayKey(for: cutoff)
+
+        guard let cloudByDay = await SupabaseREST.fetchFoodEntriesSince(dayKeyFrom: fromDayKey) else { return }
+
+        for (dayKey, cloudEntries) in cloudByDay {
+            // Existing local snapshot is treated as authoritative for this device.
+            if hasLocalSnapshot(dayKey: dayKey) { continue }
+            saveLocalOnly(cloudEntries, dayKey: dayKey)
+        }
+
+        await MainActor.run {
+            NotificationCenter.default.post(name: .foodLogDidChange, object: nil)
+        }
+    }
+
     func loadAllLocalDays() -> [(dayKey: String, entries: [FoodEntry])] {
+        migrateLegacyDataIfNeeded()
         pruneOldData()
         guard let dir = try? baseDirURL(),
               let files = try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else { return [] }
@@ -180,8 +205,31 @@ final class FoodLogStore {
     }
 
     private func baseDirURL() throws -> URL {
-        let support = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        return support.appendingPathComponent("Calories", isDirectory: true).appendingPathComponent("foodlog", isDirectory: true)
+        try SharedStorage.foodLogDirectory(fileManager: fileManager)
+    }
+
+    private func migrateLegacyDataIfNeeded() {
+        guard !Self.didAttemptLegacyMigration else { return }
+        Self.didAttemptLegacyMigration = true
+
+        guard let sharedDir = try? baseDirURL(),
+              let legacyDir = try? SharedStorage.legacyFoodLogDirectory(fileManager: fileManager) else { return }
+
+        if sharedDir.standardizedFileURL == legacyDir.standardizedFileURL { return }
+        guard fileManager.fileExists(atPath: legacyDir.path) else { return }
+
+        do {
+            try fileManager.createDirectory(at: sharedDir, withIntermediateDirectories: true)
+            let legacyFiles = try fileManager.contentsOfDirectory(at: legacyDir, includingPropertiesForKeys: nil)
+
+            for oldFile in legacyFiles where oldFile.pathExtension == "json" {
+                let migratedFile = sharedDir.appendingPathComponent(oldFile.lastPathComponent)
+                if fileManager.fileExists(atPath: migratedFile.path) { continue }
+                try fileManager.copyItem(at: oldFile, to: migratedFile)
+            }
+        } catch {
+            // no-op
+        }
     }
 
     private func entriesURL(dayKey: String) throws -> URL {

@@ -3,6 +3,33 @@ import SwiftUI
 
 @MainActor
 final class AppSettings: ObservableObject {
+    private static let sharedStore: UserDefaults = {
+        let standard = UserDefaults.standard
+        guard let shared = UserDefaults(suiteName: SharedStorage.appGroupIdentifier) else {
+            return standard
+        }
+
+        let keys = [
+            SharedSettingsKey.localeId,
+            SharedSettingsKey.selectedDayTs,
+            SharedSettingsKey.targetProtein,
+            SharedSettingsKey.targetFat,
+            SharedSettingsKey.targetCarbs,
+            SharedSettingsKey.show7dAverage,
+            SharedSettingsKey.fillBicepProgress,
+            SharedSettingsKey.progressIcon,
+            SharedSettingsKey.themeMode
+        ]
+
+        for key in keys where shared.object(forKey: key) == nil {
+            if let value = standard.object(forKey: key) {
+                shared.set(value, forKey: key)
+            }
+        }
+
+        return shared
+    }()
+
     enum ThemeMode: String, CaseIterable {
         case system
         case light
@@ -25,15 +52,15 @@ final class AppSettings: ObservableObject {
         }
     }
 
-    @AppStorage("app.localeId") var localeId: String = "ru" // пока оставлено для совместимости
+    @AppStorage(SharedSettingsKey.localeId, store: AppSettings.sharedStore) var localeId: String = "ru" // пока оставлено для совместимости
 
     /// Выбранный день для UI и логирования.
     /// Храним как timeInterval (Double), чтобы работало с AppStorage.
-    @AppStorage("app.selectedDayTs") private var selectedDayTs: Double = Date.now.timeIntervalSince1970
+    @AppStorage(SharedSettingsKey.selectedDayTs, store: AppSettings.sharedStore) private var selectedDayTs: Double = Date.now.timeIntervalSince1970
 
-    @AppStorage("app.targetProtein") var targetProtein: Double = 158
-    @AppStorage("app.targetFat") var targetFat: Double = 58
-    @AppStorage("app.targetCarbs") var targetCarbs: Double = 236
+    @AppStorage(SharedSettingsKey.targetProtein, store: AppSettings.sharedStore) var targetProtein: Double = 158
+    @AppStorage(SharedSettingsKey.targetFat, store: AppSettings.sharedStore) var targetFat: Double = 58
+    @AppStorage(SharedSettingsKey.targetCarbs, store: AppSettings.sharedStore) var targetCarbs: Double = 236
     enum ProgressIcon: String, CaseIterable {
         case strength
         case flame
@@ -62,10 +89,10 @@ final class AppSettings: ObservableObject {
         }
     }
 
-    @AppStorage("app.show7dAverage") var show7dAverage: Bool = true
-    @AppStorage("app.fillBicepProgress") var fillBicepProgress: Bool = true
-    @AppStorage("app.progressIcon") var progressIconRaw: String = ProgressIcon.strength.rawValue
-    @AppStorage("app.themeMode") var themeModeRaw: String = ThemeMode.system.rawValue
+    @AppStorage(SharedSettingsKey.show7dAverage, store: AppSettings.sharedStore) var show7dAverage: Bool = true
+    @AppStorage(SharedSettingsKey.fillBicepProgress, store: AppSettings.sharedStore) var fillBicepProgress: Bool = true
+    @AppStorage(SharedSettingsKey.progressIcon, store: AppSettings.sharedStore) var progressIconRaw: String = ProgressIcon.strength.rawValue
+    @AppStorage(SharedSettingsKey.themeMode, store: AppSettings.sharedStore) var themeModeRaw: String = ThemeMode.system.rawValue
 
     var locale: Locale { Locale(identifier: localeId) }
 

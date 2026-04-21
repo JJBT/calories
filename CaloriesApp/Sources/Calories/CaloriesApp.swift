@@ -1,18 +1,5 @@
 import SwiftUI
-import UIKit
-
-extension Color {
-    static let appBackground = Color(uiColor: .systemBackground)
-    static let appSurface = Color(uiColor: .secondarySystemBackground)
-    static let appSurfaceElevated = Color(uiColor: .tertiarySystemBackground)
-
-    static let appTextPrimary = Color(uiColor: .label)
-    static let appTextSecondary = Color(uiColor: .secondaryLabel)
-    static let appTextTertiary = Color(uiColor: .tertiaryLabel)
-
-    static let appBubbleUser = Color(uiColor: .label)
-    static let appBubbleAssistant = Color(uiColor: .secondarySystemBackground)
-}
+import WidgetKit
 
 @main
 struct CaloriesApp: App {
@@ -22,6 +9,10 @@ struct CaloriesApp: App {
 
     private let foodStore = FoodLogStore()
     private let favoritesStore = FavoritesStore()
+
+    private func refreshWidgets() {
+        WidgetCenter.shared.reloadTimelines(ofKind: "CaloriesMacrosWidget")
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -35,6 +26,7 @@ struct CaloriesApp: App {
                     await settings.ensureProfileDefaultsInCloud()
                     await settings.syncGoalsFromCloudIfAvailable()
                     if session.isAuthenticated {
+                        await foodStore.hydrateRecentDaysFromCloud()
                         await foodStore.syncAllLocalDaysToCloud()
                         await favoritesStore.syncLocalToCloud()
                     }
@@ -46,6 +38,7 @@ struct CaloriesApp: App {
                         await settings.ensureProfileDefaultsInCloud()
                         await settings.syncGoalsFromCloudIfAvailable()
                         if session.isAuthenticated {
+                            await foodStore.hydrateRecentDaysFromCloud()
                             await foodStore.syncAllLocalDaysToCloud()
                             await favoritesStore.syncLocalToCloud()
                         }
@@ -63,12 +56,18 @@ struct CaloriesApp: App {
                 }
                 .onChange(of: settings.targetProtein) { _, _ in
                     Task { await settings.syncGoalsToCloud() }
+                    refreshWidgets()
                 }
                 .onChange(of: settings.targetFat) { _, _ in
                     Task { await settings.syncGoalsToCloud() }
+                    refreshWidgets()
                 }
                 .onChange(of: settings.targetCarbs) { _, _ in
                     Task { await settings.syncGoalsToCloud() }
+                    refreshWidgets()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: .foodLogDidChange)) { _ in
+                    refreshWidgets()
                 }
         }
     }
